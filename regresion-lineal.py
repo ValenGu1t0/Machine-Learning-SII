@@ -32,8 +32,8 @@ y_i = y_train[i]  ## 300.0
 print(f"(x^({i}), y^({i})) = ({x_i}, {y_i})")
 
 
-# Función que simula el comportamiento de la función modelo de regresión lineal
-# Calcula los valores de salida del modelo lineal
+### Función que simula el comportamiento de la función modelo de regresión lineal
+# Calcula los valores de salida del modelo lineal (le pasamos la var independiente, el weight y la bias)
 def compute_model_output(x, w, b):
     """
     Computes the prediction of a linear model
@@ -50,20 +50,20 @@ def compute_model_output(x, w, b):
         
     return f_wb
 
-# Parámetros adicionales de scatter()
-# La idea principal es que nuestros valores de entrada:
+
+# La idea principal es que nuestros valores de entrada 
 w = 200
 b = 100
 
 # Se asemejen lo maximo posible a los valores esperados y_train
-
 tmp_f_wb = compute_model_output(x_train, w, b,)
 
-# Genera la línea representante de la función
-plt.plot(x_train, tmp_f_wb, c='b',label='Predicción')
 
-# Datos de entrada para graficar los datos
-plt.scatter(x_train, y_train, marker='x', c='r',label='Valores reales')
+# Genera la línea representante de la función
+plt.plot(x_train, tmp_f_wb, c='b', label='Predicción')
+
+# Datos de entrada para generar el gráfico
+plt.scatter(x_train, y_train, marker='x', c='r', label='Valores reales')
 
 # Titulo del grafico
 plt.title("Precio casas")
@@ -78,3 +78,13 @@ plt.legend()
 plt.show()
 
 
+### Encontramos que los valores w=200 y b=100 nos dejan una linea recta que coincide a la perfección con los valores independientes ingresados al principio.
+# Ahora si, gracias a este ajuste, podemos empezar a jugar con las variables independientes desconocidas y predecir mas valores a la larga.
+
+# Si quisieramos saber el valor para una casa de 1200m2, entonces:  
+x_i = 1.2
+cost_1200m2 = w * x_i + b     # Llamamos a la funcion lineal.. con los valores ajustados de w y b
+
+print(f"Una casa de {x_i}k m2 costaría algo de ${cost_1200m2:.0f} mil dólares")
+
+# Para probar distintas predicciones, basta con modificar el valor de x_i
