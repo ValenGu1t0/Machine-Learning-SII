@@ -1,27 +1,34 @@
+# Pequeña practica para probar un modelo de regresión lineal en python.
+
+# operaciones con arrays y matrices (grandes vol)
 import numpy as np
+
+# librería para graficar
 import matplotlib.pyplot as plt
 
-
-# x_train son los valores ingresados o iniciales (1000 m2)
-# y_train son los valores esperados (precio en $miles de dolares)
+# x_train son los valores iniciales (1000 m2) - empezamos con 1000 y 2000 m2
 x_train = np.array([1.0, 2.0])
-y_train = np.array([300.0, 500.0])
 print(f"Miles de m2 - x_train = {x_train}")
+
+# y_train son los valores objetivo de entrenamieento; alimentamos el modelo con los valores iniciales de 300k usd para 1000m2 y 500k para 2000m2.
+y_train = np.array([300.0, 500.0])
 print(f"Miles de dolares - y_train = {y_train}")
 
-# ?
+# .shape se utiliza para obtener las dimensiones o tamaño de un array o matriz. 
+# En este caso, m toma el tamaño de las columnas (el del array)
 print(f"x_train.shape: {x_train.shape}")
 
-# m es el tamaño de la muestra, osea el numero de inputs que ingresaremos al modelo
+# m es el tamaño de la muestra, osea el numero de variables independientes que ingresaremos al modelo
 m = x_train.shape[0]
 print(f"Number of training examples is: {m}")
 
 
-# ?
+# elemento i-esimo de la entrada (cada subindice) - empieza en 0
 i = 0 
 
-x_i = x_train[i]
-y_i = y_train[i]
+x_i = x_train[i]  ## 1.0
+y_i = y_train[i]  ## 300.0
+
 print(f"(x^({i}), y^({i})) = ({x_i}, {y_i})")
 
 
@@ -66,6 +73,7 @@ plt.ylabel('Precio (en 1000s de dólares)')
 
 # Etiqueta del eje X
 plt.xlabel('Superficie (1000 m2)')
+
 plt.legend()
 plt.show()
 
